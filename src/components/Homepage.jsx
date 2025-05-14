@@ -148,71 +148,70 @@ export default function Homepage() {
   ];
 
   const RideTypeCircle = () => (
-    <div className="fixed left-0 top-1/2 -translate-y-1/2 z-10 w-[20vw] h-[600px] overflow-hidden pointer-events-none">
+    <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10 h-[600px] pointer-events-none">
       <div
         className="h-[600px] w-[600px] rounded-full relative"
         style={{
           background:
             "conic-gradient(from 0deg, rgb(232, 233, 241) 15deg, rgb(250, 213, 0) 65deg, rgb(250, 213, 0) 115deg, rgb(232, 233, 241) 165deg, rgb(232, 233, 241))",
           position: "absolute",
-          right: "0",
+          left: "-300px",
         }}
       >
-        <div className="bg-[rgb(34,48,74)] h-[420px] w-[420px] rounded-full absolute top-1/2 right-[90px] -translate-y-1/2"></div>
+        <div className="bg-[rgb(34,48,74)] h-[420px] w-[420px] rounded-full absolute top-1/2 left-[90px] -translate-y-1/2"></div>
 
         <div
           className="absolute transform -translate-x-1/2 -translate-y-1/2"
-          style={{ top: "19rem", right: "3.3rem" }}
-        >
-          <div className="h-[170px] bg-button w-[170px] rounded-full flex justify-center items-center">
-            <div className="h-[150px] w-[150px] rounded-full bg-white right-10"></div>
-          </div>
-        </div>
+          style={{ top: "19rem", left: "16.7rem" }}
+        ></div>
 
+        {/* Land Rides */}
         <div>
-          <div className="absolute top-24 right-20 transform z-20 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer">
+          <div className="absolute top-24 left-20 transform z-20 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer">
             <img
               className="scale-100 transition-transform duration-300 ease-in-out hover:scale-110"
               src="https://wonderla.vercel.app/icons/landRides.svg"
               alt="Land Rides"
             />
           </div>
-          <div className="absolute top-24 -right-20 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize">
+          <div className="absolute top-24 left-48 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize">
             <div>land</div>
-            <div className="text-sm rounded-2xl px-3 py-1 bg-blue-light">
+            <div className="text-sm rounded-2xl px-3 py-1 bg-blue-500 bg-opacity-30">
               73 Rides
             </div>
           </div>
         </div>
 
+        {/* Water Rides */}
         <div>
-          <div className="absolute top-1/2 -right-3 transform z-20 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer">
+          <div className="absolute top-28 left-28 transform z-20 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer">
             <img
-              className="scale-140 transition-transform duration-300 ease-in-out hover:scale-150"
+              className="transition-transform duration-300 ease-in-out hover:scale-110"
               src="https://wonderla.vercel.app/icons/waterRides.svg"
               alt="Water Rides"
               style={{ transform: "scale(1.4)" }}
             />
           </div>
-          <div className="absolute top-1/2 -right-42 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize">
+          <div className="absolute top-1/2 left-56 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize">
             <div>water</div>
-            <div className="text-sm rounded-2xl px-3 py-1 bg-blue-light">
+            <div className="text-sm rounded-2xl px-3 py-1 bg-blue-500 bg-opacity-30">
               54 Rides
             </div>
           </div>
         </div>
 
+        {/* Kids Rides */}
         <div>
-          <div className="absolute bottom-12 right-20 transform z-20 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer">
+          <div className="absolute bottom-12 left-20 transform z-20 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer">
             <img
               className="scale-100 transition-transform duration-300 ease-in-out hover:scale-110"
               src="https://wonderla.vercel.app/icons/waterRides.svg"
               alt="Kids Rides"
             />
           </div>
-          <div className="absolute bottom-12 -right-20 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize">
+          <div className="absolute bottom-12 left-48 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize">
             <div>kids</div>
-            <div className="text-sm rounded-2xl px-3 py-1 bg-blue-light">
+            <div className="text-sm rounded-2xl px-3 py-1 bg-blue-500 bg-opacity-30">
               35 Rides
             </div>
           </div>
@@ -222,14 +221,17 @@ export default function Homepage() {
   );
 
   return (
-    <div className="flex w-full h-full">
-      <div className="w-1/3 relative overflow-hidden">
+    <div className="flex w-full h-full relative">
+      {/* Yellow strip section with ride types */}
+      <div className="w-1/4 relative">
         <RideTypeCircle />
       </div>
-      <div className="flex-grow h-full ml-5">
-        {/* Updated heading section with buttons on the same line */}
+
+      {/* Main content area */}
+      <div className="w-3/4 pl-16">
+        {/* Heading section with buttons */}
         <div className="flex justify-between items-center py-8">
-          <h1 className="text-6xl text-white font-bold">OUR ICONIC RIDES</h1>
+          <h1 className="text-5xl text-white font-bold">OUR ICONIC RIDES</h1>
           <div className="flex space-x-4">
             <button
               onClick={scrollPrev}
@@ -277,17 +279,14 @@ export default function Homepage() {
           </div>
         </div>
 
+        {/* Carousel section */}
         <div className="relative">
-          {/* Carousel */}
-          <div
-            className="embla mt-5 relative overflow-hidden mx-16"
-            ref={emblaRef}
-          >
+          <div className="embla mt-5 relative overflow-hidden" ref={emblaRef}>
             <div className="embla__container flex">
               {rides.map((ride, index) => (
                 <div
                   key={index}
-                  className="rounded-3xl mx-2 max-w-[250px] flex-none transform-gpu relative"
+                  className="rounded-3xl mx-2 min-w-[250px] max-w-[250px] flex-none transform-gpu relative"
                 >
                   {/* Gradient overlay */}
                   <div
@@ -308,7 +307,7 @@ export default function Homepage() {
                       <div className="text-xs mt-1">{ride.description}</div>
                       <div className="transition-transform duration-200 hover:scale-105">
                         <a href={ride.link}>
-                          <button className="py-3 px-8 mt-3 uppercase font-extrabold bg-[#FAD504] rounded-lg text-text hover:cursor-pointer">
+                          <button className="py-2 px-6 mt-3 uppercase font-extrabold bg-[#FAD504] rounded-lg text-blue-900 hover:cursor-pointer">
                             <div className="flex justify-center items-center gap-1">
                               <div className="text-xs">Ride Details</div>
                             </div>
@@ -336,7 +335,8 @@ export default function Homepage() {
           </div>
         </div>
 
-        <div className="flex justify-center mt-8">
+        {/* Explore button */}
+        <div className="flex justify-start mt-8">
           <button className="py-3 px-16 font-bold bg-yellow-400 rounded-full text-blue-900 hover:bg-yellow-500 transition-all duration-200">
             Explore All Rides!
           </button>
