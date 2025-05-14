@@ -101,7 +101,6 @@ export default function WonderlaNavbar() {
             </div>
           </div>
 
-          {/* Navigation Items - Centered */}
           <div className="hidden md:flex items-center justify-center space-x-4 lg:space-x-6 w-1/2">
             <NavItem
               icon={<MapPin size={18} />}
@@ -118,13 +117,11 @@ export default function WonderlaNavbar() {
             <NavItem icon={<Calendar size={18} />} text="EVENTS" />
           </div>
 
-          {/* Book Tickets Button and Menu Button */}
           <div className="w-1/4 flex justify-end items-center space-x-2 md:space-x-4">
             <button className="bg-yellow-400 text-blue-900 px-2 md:px-4 py-1 md:py-2 rounded-md font-bold text-xs md:text-sm flex items-center whitespace-nowrap">
               BOOK TICKETS <Zap className="ml-1" size={14} />
             </button>
 
-            {/* Burger Menu Icon */}
             <button
               className="text-gray-700 hover:text-gray-900 focus:outline-none"
               onClick={() => setShowMenu(!showMenu)}
@@ -134,7 +131,6 @@ export default function WonderlaNavbar() {
           </div>
         </div>
 
-        {/* Locations Dropdown */}
         {showLocations && (
           <div
             className="absolute bg-white rounded-3xl shadow-lg z-20 w-64"
@@ -180,14 +176,12 @@ export default function WonderlaNavbar() {
         )}
       </div>
 
-      {/* Menu Sidebar with Overlay */}
       <div
         className={`fixed inset-0 bg-black z-50 transition-opacity duration-300 ease-in-out ${
           showMenu ? "bg-opacity-50 visible" : "bg-opacity-0 invisible"
         }`}
         onClick={() => setShowMenu(false)}
       >
-        {/* Updated Sidebar Menu */}
         <div
           className={`fixed top-0 right-0 h-dvh w-[470px] bg-white overflow-hidden no-scrollbar transition-transform duration-300 ease-in-out ${
             showMenu ? "translate-x-0" : "translate-x-full"
@@ -212,7 +206,6 @@ export default function WonderlaNavbar() {
 
           <div className="h-full min-h-0 overflow-y-scroll p-7">
             <div className="h-fit flex flex-col overflow-y-visible flex-1 pb-24">
-              {/* Parks Section */}
               <div className="flex-1 cursor-pointer">
                 <div
                   className="flex items-center gap-3 justify-between"
@@ -328,7 +321,6 @@ export default function WonderlaNavbar() {
                 </div>
               </div>
 
-              {/* Offers & Combos Section */}
               <div>
                 <div className="flex-1 cursor-pointer">
                   <div className="flex items-center gap-3">
@@ -352,7 +344,6 @@ export default function WonderlaNavbar() {
                 </div>
               </div>
 
-              {/* Timings and Guidelines Section */}
               <div>
                 <div className="flex-1 cursor-pointer">
                   <div className="flex items-center gap-3">
@@ -376,9 +367,7 @@ export default function WonderlaNavbar() {
                 </div>
               </div>
 
-              {/* Action Buttons */}
               <div className="flex flex-col gap-2">
-                {/* Group Booking */}
                 <div
                   className="flex-1 p-2 rounded-2xl"
                   style={{
@@ -391,17 +380,16 @@ export default function WonderlaNavbar() {
                       <Users className="h-10 w-10 text-blue-600" />
                     </div>
                     <div>
-                      <div className="text-xl font-normal mb-1">
+                      <div className="text-xl font-normal mb-1 flex items-center">
                         Group Booking
                       </div>
-                      <div className="text-xs text-gray-600">
+                      <div className="text-xs text-gray-600 flex items-center">
                         Reach Out To Wonderla Team
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Tour Operator Portal */}
                 <div
                   className="flex-1 p-2 rounded-2xl"
                   style={{
@@ -427,7 +415,6 @@ export default function WonderlaNavbar() {
                   </div>
                 </div>
 
-                {/* Partner With Us */}
                 <div
                   className="flex-1 p-2 rounded-2xl"
                   style={{
@@ -440,7 +427,7 @@ export default function WonderlaNavbar() {
                       <Handshake className="h-10 w-10 text-blue-600" />
                     </div>
                     <div>
-                      <div className="text-xl font-normal mb-1">
+                      <div className="text-xl font-normal mb-1 flex items-center">
                         Partner With Us
                       </div>
                       <div className="text-xs text-gray-600">
@@ -451,7 +438,6 @@ export default function WonderlaNavbar() {
                 </div>
               </div>
 
-              {/* About Us Section */}
               <div className="pt-3">
                 <div className="flex-1 cursor-pointer">
                   <div className="flex items-center gap-3">
@@ -473,7 +459,6 @@ export default function WonderlaNavbar() {
                 </div>
               </div>
 
-              {/* Quick Links Section */}
               <div className="mb-8">
                 <div className="flex-1 cursor-pointer">
                   <div
@@ -521,7 +506,6 @@ export default function WonderlaNavbar() {
                 </div>
               </div>
 
-              {/* Contact Us Section */}
               <div className="flex-1 cursor-pointer">
                 <div className="flex items-center gap-3">
                   <div>
@@ -610,7 +594,6 @@ function LocationItem({
         <ChevronRight size={16} className="ml-auto text-[#717D92]" />
       )}
 
-      {/* Submenu for Bangalore Resorts */}
       {name === "BENGALURU" && isActive && (
         <div className="absolute left-full top-0 bg-white shadow-lg rounded-xl p-2 min-w-40 z-30">
           <div className="font-medium text-gray-900 px-3 py-2 mb-2 border-b border-gray-100">

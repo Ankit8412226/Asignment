@@ -12,30 +12,25 @@ export default function Homepage() {
     loop: true,
   });
 
-  // Update selected index when scrolling
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
     setSelectedIndex(emblaApi.selectedScrollSnap());
   }, [emblaApi]);
 
-  // Set up auto-scroll and event listeners
   useEffect(() => {
     if (!emblaApi) return;
 
-    // Register onSelect event
     emblaApi.on("select", onSelect);
 
-    // Initial selection
     onSelect();
 
-    // Auto-scroll functionality - one by one
     const autoplay = setInterval(() => {
       emblaApi.scrollNext();
-    }, 3000); // Scroll every 3 seconds
+    }, 3000);
 
     return () => {
       emblaApi.off("select", onSelect);
-      clearInterval(autoplay); // Clean up interval on component unmount
+      clearInterval(autoplay);
     };
   }, [emblaApi, onSelect]);
 
@@ -47,7 +42,6 @@ export default function Homepage() {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
 
-  // Function to scroll to specific slide
   const scrollTo = useCallback(
     (index) => {
       if (emblaApi) emblaApi.scrollTo(index);
@@ -148,70 +142,69 @@ export default function Homepage() {
   ];
 
   const RideTypeCircle = () => (
-    <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10 h-[600px] pointer-events-none">
+    <div className="fixed left-0 top-1/2 -translate-y-1/2 z-10 w-[20vw] h-[600px] overflow-visible pointer-events-none">
       <div
         className="h-[600px] w-[600px] rounded-full relative"
         style={{
           background:
             "conic-gradient(from 0deg, rgb(232, 233, 241) 15deg, rgb(250, 213, 0) 65deg, rgb(250, 213, 0) 115deg, rgb(232, 233, 241) 165deg, rgb(232, 233, 241))",
           position: "absolute",
-          left: "-300px",
+          right: "0",
         }}
       >
-        <div className="bg-[rgb(34,48,74)] h-[420px] w-[420px] rounded-full absolute top-1/2 left-[90px] -translate-y-1/2"></div>
+        {/* Dark blue inner circle */}
+        <div className="bg-[rgb(34,48,74)] h-[420px] w-[420px] rounded-full absolute top-1/2 right-[90px] -translate-y-1/2"></div>
 
-        <div
-          className="absolute transform -translate-x-1/2 -translate-y-1/2"
-          style={{ top: "19rem", left: "16.7rem" }}
-        ></div>
+        {/* White circular box with yellow border - now properly aligned with the yellow strip */}
 
-        {/* Land Rides */}
+        {/* Land rides section */}
         <div>
-          <div className="absolute top-24 left-20 transform z-20 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer">
+          <div className="absolute top-24 right-20 transform z-20 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer">
             <img
               className="scale-100 transition-transform duration-300 ease-in-out hover:scale-110"
               src="https://wonderla.vercel.app/icons/landRides.svg"
               alt="Land Rides"
             />
           </div>
-          <div className="absolute top-24 left-48 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize">
+          <div className="absolute top-24 -right-20 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize">
             <div>land</div>
-            <div className="text-sm rounded-2xl px-3 py-1 bg-blue-500 bg-opacity-30">
+            <div className="text-sm rounded-2xl px-3 py-1  bg-[#788beb]">
               73 Rides
             </div>
           </div>
         </div>
 
-        {/* Water Rides */}
-        <div>
-          <div className="absolute top-28 left-28 transform z-20 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer">
-            <img
-              className="transition-transform duration-300 ease-in-out hover:scale-110"
-              src="https://wonderla.vercel.app/icons/waterRides.svg"
-              alt="Water Rides"
-              style={{ transform: "scale(1.4)" }}
-            />
+        {/* Water rides section */}
+        <div className="flex items-center justify-center w-32">
+          <div className="absolute top-1/2 -right-12 transform z-30 -translate-x-1/4 -translate-y-1/2 hover:cursor-pointer">
+            <div className="bg-white rounded-full border-4 border-yellow-400 flex items-center justify-center w-32 h-32">
+              <img
+                className="transition-transform duration-300 ease-in-out hover:scale-110"
+                src="https://wonderla.vercel.app/icons/waterRides.svg"
+                alt="Water Rides"
+              />
+            </div>
           </div>
-          <div className="absolute top-1/2 left-56 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize">
-            <div>water</div>
-            <div className="text-sm rounded-2xl px-3 py-1 bg-blue-500 bg-opacity-30">
+          <div className="absolute top-1/2 -right-36 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize">
+            <div className="whitespace-nowrap">water</div>
+            <div className="text-sm rounded-2xl px-3 py-1  bg-[#788beb] whitespace-nowrap">
               54 Rides
             </div>
           </div>
         </div>
 
-        {/* Kids Rides */}
+        {/* Kids rides section */}
         <div>
-          <div className="absolute bottom-12 left-20 transform z-20 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer">
+          <div className="absolute bottom-12 right-20 transform z-20 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer">
             <img
               className="scale-100 transition-transform duration-300 ease-in-out hover:scale-110"
               src="https://wonderla.vercel.app/icons/waterRides.svg"
               alt="Kids Rides"
             />
           </div>
-          <div className="absolute bottom-12 left-48 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize">
+          <div className="absolute bottom-12 -right-20 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl capitalize">
             <div>kids</div>
-            <div className="text-sm rounded-2xl px-3 py-1 bg-blue-500 bg-opacity-30">
+            <div className="text-sm rounded-2xl px-3 py-1  bg-[#788beb]">
               35 Rides
             </div>
           </div>
@@ -221,17 +214,13 @@ export default function Homepage() {
   );
 
   return (
-    <div className="flex w-full h-full relative">
-      {/* Yellow strip section with ride types */}
-      <div className="w-1/4 relative">
+    <div className="flex w-full h-full items-center justify-center">
+      <div className="w-2/3 relative overflow-hidden mt-12">
         <RideTypeCircle />
       </div>
-
-      {/* Main content area */}
-      <div className="w-3/4 pl-16">
-        {/* Heading section with buttons */}
+      <div className="flex-grow h-full ml-5">
         <div className="flex justify-between items-center py-8">
-          <h1 className="text-5xl text-white font-bold">OUR ICONIC RIDES</h1>
+          <h1 className="text-6xl text-white font-bold">OUR ICONIC RIDES</h1>
           <div className="flex space-x-4">
             <button
               onClick={scrollPrev}
@@ -239,8 +228,8 @@ export default function Homepage() {
               aria-label="Previous slide"
             >
               <svg
-                width="16"
-                height="16"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -261,8 +250,8 @@ export default function Homepage() {
               aria-label="Next slide"
             >
               <svg
-                width="16"
-                height="16"
+                width="24"
+                height="24"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -279,14 +268,17 @@ export default function Homepage() {
           </div>
         </div>
 
-        {/* Carousel section */}
         <div className="relative">
-          <div className="embla mt-5 relative overflow-hidden" ref={emblaRef}>
+          {/* Carousel */}
+          <div
+            className="embla mt-5 relative overflow-hidden mx-16"
+            ref={emblaRef}
+          >
             <div className="embla__container flex">
               {rides.map((ride, index) => (
                 <div
                   key={index}
-                  className="rounded-3xl mx-2 min-w-[250px] max-w-[250px] flex-none transform-gpu relative"
+                  className="rounded-3xl mx-2 max-w-[250px] flex-none transform-gpu relative"
                 >
                   {/* Gradient overlay */}
                   <div
@@ -307,7 +299,7 @@ export default function Homepage() {
                       <div className="text-xs mt-1">{ride.description}</div>
                       <div className="transition-transform duration-200 hover:scale-105">
                         <a href={ride.link}>
-                          <button className="py-2 px-6 mt-3 uppercase font-extrabold bg-[#FAD504] rounded-lg text-blue-900 hover:cursor-pointer">
+                          <button className="py-3 px-8 mt-3 uppercase font-extrabold bg-[#FAD504] rounded-[4px] text-text hover:cursor-pointer">
                             <div className="flex justify-center items-center gap-1">
                               <div className="text-xs">Ride Details</div>
                             </div>
@@ -335,7 +327,6 @@ export default function Homepage() {
           </div>
         </div>
 
-        {/* Explore button */}
         <div className="flex justify-start mt-8">
           <button className="py-3 px-16 font-bold bg-yellow-400 rounded-full text-blue-900 hover:bg-yellow-500 transition-all duration-200">
             Explore All Rides!
