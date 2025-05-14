@@ -142,7 +142,7 @@ export default function Homepage() {
   ];
 
   const RideTypeCircle = () => (
-    <div className="fixed left-0 top-1/2 -translate-y-1/2 z-10 w-[20vw] h-[600px] overflow-visible pointer-events-none">
+    <div className="fixed left-0 top-[58%] -translate-y-1/2 z-10 w-[20vw] h-[600px] overflow-visible pointer-events-none">
       <div
         className="h-[600px] w-[600px] rounded-full relative"
         style={{
@@ -152,12 +152,8 @@ export default function Homepage() {
           right: "0",
         }}
       >
-        {/* Dark blue inner circle */}
         <div className="bg-[rgb(34,48,74)] h-[420px] w-[420px] rounded-full absolute top-1/2 right-[90px] -translate-y-1/2"></div>
 
-        {/* White circular box with yellow border - now properly aligned with the yellow strip */}
-
-        {/* Land rides section */}
         <div>
           <div className="absolute top-24 right-20 transform z-20 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer">
             <img
@@ -174,7 +170,6 @@ export default function Homepage() {
           </div>
         </div>
 
-        {/* Water rides section */}
         <div className="flex items-center justify-center w-32">
           <div className="absolute top-1/2 -right-12 transform z-30 -translate-x-1/4 -translate-y-1/2 hover:cursor-pointer">
             <div className="bg-white rounded-full border-4 border-yellow-400 flex items-center justify-center w-32 h-32">
@@ -193,7 +188,6 @@ export default function Homepage() {
           </div>
         </div>
 
-        {/* Kids rides section */}
         <div>
           <div className="absolute bottom-12 right-20 transform z-20 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer">
             <img
